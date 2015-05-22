@@ -13,8 +13,8 @@ The data used in this exercise represent data collected from the accelerometers 
 ####description of run_analysis.R####
 * get the data
   * create folder data if not exists
-  * download zip file if not exists
-  * unzip
+  * download zip file from internet if not exists. url = "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
+  * unzip file
 * read and select the data
   * read the variable names from file features.txt
   * read the data from ~/train/X_train.txt and ~/test/X_test.txt
