@@ -26,7 +26,8 @@ all <- bind_rows(train, test)
 dall <- tbl_df(all)
 colnames(dall) <- featurenames
 dallnodoubles <- dall[ !duplicated(names(dall)) ] %>%   # removing ducpilates we don't need
-  select(contains("mean"), contains("std")) 
+  select(contains("mean"), contains("std"), -contains("angle")) 
+  
 
 #read activity and subject
 activity_test <- read.csv("./data/UCI HAR Dataset/test/y_test.txt", header = F)
@@ -47,7 +48,7 @@ dsubject <- tbl_df( subject )
 #combine and output
 dallnodoublesacti <- tbl_df( bind_cols(dactivity, dsubject, dallnodoubles) )
 
-newdf <- dallnodoublesacti %>% group_by( activity, subject) %>% summarise_each(funs( mean(tBodyAcc.mean...X)))
+newdf <- dallnodoublesacti %>% group_by( activity, subject) %>% summarise_each(funs( mean ))
 
 write.table(newdf, file="newdf.txt", row.name=FALSE)
 
